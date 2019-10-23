@@ -1,6 +1,8 @@
 ## rtsp-server
 
-网页直播rtsp视频，使用node.js+ffmpeg+websocket+flv.js
+网页直播rtsp视频，使用node.js+ffmpeg+websocket+flv.js。
+
+主要代码使用了[HTML5播放RTSP视频](https://hpdell.github.io/%E7%BC%96%E7%A8%8B/html5-rtsp/index.html)文章中的方案。
 
 ## 使用
 ```bash
