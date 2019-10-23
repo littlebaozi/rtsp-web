@@ -1,6 +1,8 @@
 ## rtsp-server
 
-网页直播rtsp视频，使用node.js+ffmpeg+websocket+flv.js
+网页直播rtsp视频，使用node.js+ffmpeg+websocket+flv.js。
+
+主要代码使用了[HTML5播放RTSP视频](https://hpdell.github.io/%E7%BC%96%E7%A8%8B/html5-rtsp/index.html)文章中的方案。
 
 ## 使用
 ```bash
@@ -26,8 +28,8 @@ export default {
   data () {
     return {
       player: null,
-      streamId: '1',
-      rtspUrl: 'rtsp://wowzaec2demo.streamlock.net/vod/mp4:BigBuckBunny_115k.mov'
+      streamId: '1', // 视频流通道
+      rtspUrl: 'rtsp://wowzaec2demo.streamlock.net/vod/mp4:BigBuckBunny_115k.mov' // rtsp视频地址
     }
   },
   methods: {
@@ -42,7 +44,7 @@ export default {
             type: 'flv',
             isLive: true,
             enableStashBuffer: false,
-            url: `ws://localhost:8888/rtsp/${this.streamId}/?url=${this.rtspUrl}`
+            url: `ws://localhost:8888/rtsp/${this.streamId}/?url=${this.rtspUrl}` // 服务端的websocket地址
           })
           this.player.attachMediaElement(video)
           try {
@@ -59,6 +61,7 @@ export default {
         }
       }
     },
+    // 延时之后，调整时间
     justifyPlayTime () {
       console.log(document.hidden)
       if (!document.hidden) {
