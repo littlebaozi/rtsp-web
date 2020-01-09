@@ -4,6 +4,8 @@
 
 主要代码使用了[HTML5播放RTSP视频](https://hpdell.github.io/%E7%BC%96%E7%A8%8B/html5-rtsp/index.html)文章中的方案。
 
+[网页直播rtsp视频 node.js+ffmpeg+websocket+flv.js](https://littlebaozi.github.io/2019/10/23/pratice-rtsp-h5/)
+
 ## 使用
 ```bash
 npm start # babel转码并运行程序
