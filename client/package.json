@@ -10,7 +10,6 @@
   "dependencies": {
     "core-js": "^3.4.4",
     "flv.js": "^1.5.0",
-    "socket.io-client": "^2.3.0",
     "view-design": "^4.0.0",
     "vue": "^2.6.10"
   },

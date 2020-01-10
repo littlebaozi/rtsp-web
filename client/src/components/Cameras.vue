@@ -11,14 +11,14 @@
         </template>
       </Table>
     </Card>
-    <VideoModal v-model="modalShow"></VideoModal>
+    <VideoModal v-model="modalShow" :modal-data="modalData"></VideoModal>
   </div>
 </template>
 
 <script>
   import VideoModal from './VideoModal';
   export default {
-    component: {
+    components: {
       VideoModal
     },
     data () {
@@ -33,7 +33,7 @@
             key: 'desc'
           },
           {
-            ttile: '操作',
+            title: '操作',
             slot: 'action',
             width: 150,
             align: 'center'
@@ -46,12 +46,13 @@
             desc: '测试摄像头'
           }
         ],
-        modalShow: false
+        modalShow: false,
+        modalData: null
       }
     },
     methods: {
       showVideo(row) {
-        console.log(row)
+        this.modalData = {...row}
         this.modalShow = true
       }
     }
