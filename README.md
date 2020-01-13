@@ -39,7 +39,7 @@ node ./dist/index.js
 ```
 
 ## client端
-`client`目录是web端代码。
+`client`目录是web端代码。使用的是vue+iview
 
 运行前，先运行server端，视频才能观看。
 

@@ -2,12 +2,11 @@ const express = require('express');
 const expressWebSocket = require("express-ws");
 import ffmpeg from "fluent-ffmpeg";
 import webSocketStream from "websocket-stream/stream";
-// import WebSocket from "websocket-stream";
-// import * as http from "http";
 
 function localServer() {
   let app = express();
   app.use(express.static(__dirname));
+  // extend express app with app.ws()
   expressWebSocket(app, null, {
     perMessageDeflate: true
   });
@@ -18,6 +17,7 @@ function localServer() {
 
 function rtspRequestHandle(ws, req) {
   console.log("rtsp request handle");
+  // convert ws instance to stream
   const stream = webSocketStream(ws, {
     binary: true,
     browserBufferTimeout: 1000000
@@ -28,6 +28,7 @@ function rtspRequestHandle(ws, req) {
   console.log("rtsp url:", url);
   console.log("rtsp params:", req.params);
   
+  // ffmpet转码
   let ffmpegCommand = ffmpeg(url)
     .addInputOption("-rtsp_transport", "tcp", "-buffer_size", "102400")  // 这里可以添加一些 RTSP 优化的参数
     .on("start", function () {
@@ -47,7 +48,7 @@ function rtspRequestHandle(ws, req) {
       stream.end();
       // 摄像机断线的处理
     })
-    .outputFormat("flv").videoCodec("copy").noAudio();
+    .outputFormat("flv").videoCodec("copy").noAudio(); // 输出格式flv 无音频
 
   stream.on("close", function () {
     ffmpegCommand.kill('SIGKILL');

@@ -69,7 +69,8 @@
             this.player = flvjs.createPlayer({
               type: 'flv',
               isLive: true,
-              enableStashBuffer: false,
+              hasAudio: false,
+              enableStashBuffer: false, // Enable IO stash buffer. Set to false if you need realtime (minimal latency) for live stream playback, but may stalled if there's network jittering.
               url: `ws://localhost:8888/rtsp/${this.streamId}/?url=${this.rtspUrl}`
             })
             this.player.attachMediaElement(video)
