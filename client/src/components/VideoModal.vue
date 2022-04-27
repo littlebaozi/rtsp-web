@@ -33,8 +33,7 @@
     },
     data () {
       return {
-        fullscreen: false,
-        rtspUrl: 'rtsp://wowzaec2demo.streamlock.net/vod/mp4:BigBuckBunny_115k.mov'
+        fullscreen: false
       }
     },
     computed: {
@@ -71,7 +70,7 @@
               isLive: true,
               hasAudio: false,
               enableStashBuffer: false, // Enable IO stash buffer. Set to false if you need realtime (minimal latency) for live stream playback, but may stalled if there's network jittering.
-              url: `ws://localhost:8888/rtsp/${this.streamId}/?url=${this.rtspUrl}`
+              url: `ws://littlebaozi-rtsp-web-q97gv447cvwp-8080.githubpreview.dev:8888/rtsp/${this.streamId}/?url=${decodeURIComponent(this.modalData.rtspUrl)}`
             })
             this.player.attachMediaElement(video)
             try {
