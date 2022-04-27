@@ -44,7 +44,7 @@
             id: 1,
             name: '摄像头1',
             desc: '测试摄像头',
-            url: 'rtsp://wowzaec2demo.streamlock.net/vod/mp4:BigBuckBunny_115k.mov?a=1&b=2'
+            url: 'rtsp://wowzaec2demo.streamlock.net/vod/mp4:BigBuckBunny_115k.mp4' // https://www.wowza.com/developer/rtsp-stream-test
           }
         ],
         modalShow: false,

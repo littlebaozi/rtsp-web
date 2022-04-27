@@ -10,7 +10,7 @@ function localServer() {
   expressWebSocket(app, null, {
     perMessageDeflate: true
   });
-  app.ws("/rtsp/:id/", rtspRequestHandle)
+  app.ws("/rtsp/:id", rtspRequestHandle)
   app.listen(8888);
   console.log("express listened")
 }
@@ -24,7 +24,7 @@ function rtspRequestHandle(ws, req) {
   }, {
     browserBufferTimeout: 1000000
   });
-  let url = req.query.url;
+  let url = decodeURIComponent(req.query.url);
   console.log("rtsp url:", url);
   console.log("rtsp params:", req.params);
   
